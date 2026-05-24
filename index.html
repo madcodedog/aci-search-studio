@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ACI Search Studio</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#overview" aria-label="ACI Search Studio home">
+        <span class="brand-mark">AI</span>
+        <span>
+          <strong>ACI Search Studio</strong>
+          <small>Lectures 1-5 + Webinar 1</small>
+        </span>
+      </a>
+      <nav class="top-actions" aria-label="Primary sections">
+        <a href="#agents">Agents</a>
+        <a href="#search-lab">Search Lab</a>
+        <a href="#heuristics">Heuristics</a>
+        <a href="#local-search">Local Search</a>
+        <a href="#references">References</a>
+      </nav>
+    </header>
+
+    <div class="app-shell">
+      <aside class="side-nav" aria-label="Lecture map">
+        <p class="eyebrow">Course Path</p>
+        <a href="#overview"><span>1</span> Foundations</a>
+        <a href="#agents"><span>2</span> Agents + PEAS</a>
+        <a href="#formulation"><span>3</span> Formulation</a>
+        <a href="#search-lab"><span>4</span> Tree Search</a>
+        <a href="#heuristics"><span>5</span> Heuristics + A*</a>
+        <a href="#local-search"><span>6</span> Optimization</a>
+        <a href="#references"><span>7</span> Study Plan</a>
+      </aside>
+
+      <main>
+        <section id="overview" class="section hero-section">
+          <div class="intro-copy">
+            <p class="eyebrow">Artificial and Computational Intelligence</p>
+            <h1>Learn search the way the lecture builds it: agent first, problem next, algorithm last.</h1>
+            <p class="lead">
+              This site turns the lecture transcripts, contact-session slides, webinar notes, and textbook references into a hands-on study companion. Read a concept, press step, watch the frontier move, then connect it back to PEAS, problem formulation, heuristics, and local optimization.
+            </p>
+            <div class="quick-actions">
+              <a class="button primary" href="#search-lab">Open search visualizer</a>
+              <a class="button" href="#heuristics">Try heuristic lab</a>
+            </div>
+          </div>
+
+          <div class="concept-panel" aria-label="Learning flow">
+            <div class="flow-node active">Perceive</div>
+            <div class="flow-link"></div>
+            <div class="flow-node">Formulate</div>
+            <div class="flow-link"></div>
+            <div class="flow-node">Search</div>
+            <div class="flow-link"></div>
+            <div class="flow-node goal">Act</div>
+            <div class="mini-legend">
+              <span><i class="dot teal"></i> Agent</span>
+              <span><i class="dot coral"></i> Frontier</span>
+              <span><i class="dot gold"></i> Heuristic</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-header">
+            <p class="eyebrow">What the teacher covered</p>
+            <h2>Lecture Map</h2>
+            <p>Click a lecture to open the actual taught material, classroom flow, formulas, examples, and revision points.</p>
+          </div>
+          <div class="lecture-grid">
+            <article class="lecture-card active" data-lecture="cs1" tabindex="0" role="button" aria-label="Open CS1 lecture notes">
+              <span>CS1</span>
+              <h3>AI Foundations</h3>
+              <p>Course structure, history of AI, Turing test, foundations, applications, risks, and the four views of AI: thinking/acting, humanly/rationally.</p>
+              <strong>Open full lecture notes</strong>
+            </article>
+            <article class="lecture-card" data-lecture="cs2" tabindex="0" role="button" aria-label="Open CS2 lecture notes">
+              <span>CS2</span>
+              <h3>Agents</h3>
+              <p>Rational agents, PEAS specification, environment properties, simple reflex, model-based, goal-based, utility-based, and learning agents.</p>
+              <strong>Open full lecture notes</strong>
+            </article>
+            <article class="lecture-card" data-lecture="cs3" tabindex="0" role="button" aria-label="Open CS3 lecture notes">
+              <span>CS3</span>
+              <h3>Search Problems</h3>
+              <p>Problem-solving agents, state spaces, initial and goal states, actions, transition model, path cost, BFS, DFS, UCS, IDS, Greedy, and A*.</p>
+              <strong>Open full lecture notes</strong>
+            </article>
+            <article class="lecture-card" data-lecture="cs4" tabindex="0" role="button" aria-label="Open CS4 lecture notes">
+              <span>CS4</span>
+              <h3>Heuristics</h3>
+              <p>Why blind search explodes, heuristic design, admissibility, consistency, effective branching factor, relaxed problems, and pattern databases.</p>
+              <strong>Open full lecture notes</strong>
+            </article>
+            <article class="lecture-card" data-lecture="cs5" tabindex="0" role="button" aria-label="Open CS5 lecture notes">
+              <span>CS5</span>
+              <h3>Local Search</h3>
+              <p>Path-irrelevant optimization, hill climbing, stochastic variants, simulated annealing, local beam search, genetic algorithms, and ACO.</p>
+              <strong>Open full lecture notes</strong>
+            </article>
+            <article class="lecture-card" data-lecture="webinar1" tabindex="0" role="button" aria-label="Open webinar lecture notes">
+              <span>Webinar</span>
+              <h3>A* Practice</h3>
+              <p>Uninformed versus informed search, A* with f(n) = g(n) + h(n), admissibility, consistency, IDA*, and memory-aware variants.</p>
+              <strong>Open full lecture notes</strong>
+            </article>
+          </div>
+          <div class="lecture-reader" id="lectureReader" aria-live="polite">
+            <div class="lecture-reader-header">
+            <div>
+              <p class="eyebrow" id="lectureMeta">CS1 transcript + CS1 slides</p>
+              <h3 id="lectureTitle">AI Foundations</h3>
+            </div>
+              <div class="lecture-actions">
+                <button class="button small" id="jumpMap" type="button">Jump to visual map</button>
+                <button class="button small" id="jumpNotebook" type="button">Jump to full lecture</button>
+                <button class="button small" id="jumpDeep" type="button">Jump to deep explanation</button>
+                <a class="button small" id="rawTranscriptLink" href="transcripts/CS1_transcript.txt" target="_blank" rel="noreferrer">Open raw transcript</a>
+                <a class="button small" href="#search-lab">Try matching animation</a>
+              </div>
+            </div>
+            <div id="visualMap" class="visual-map"></div>
+            <div id="lectureNotebook" class="lecture-notebook"></div>
+            <div id="lectureBody" class="lecture-body"></div>
+          </div>
+        </section>
+
+        <section id="agents" class="section split-section">
+          <div class="section-header">
+            <p class="eyebrow">CS2 Core Idea</p>
+            <h2>Agents, PEAS, and Environments</h2>
+            <p>The lecture keeps returning to this: before choosing an algorithm, specify what the agent can sense, do, optimize, and live inside.</p>
+          </div>
+
+          <div class="two-col">
+            <div class="tool-surface">
+              <div class="tool-header">
+                <div>
+                  <h3>PEAS Builder</h3>
+                  <p>Select a domain and inspect how the same PEAS template changes.</p>
+                </div>
+                <select id="peasSelect" aria-label="Choose PEAS example">
+                  <option value="medical">Medical diagnosis system</option>
+                  <option value="robot">Part-picking robot</option>
+                  <option value="taxi">Autonomous taxi</option>
+                  <option value="vacuum">Vacuum cleaner agent</option>
+                </select>
+              </div>
+              <div class="peas-grid" id="peasGrid"></div>
+            </div>
+
+            <div class="tool-surface">
+              <div class="tool-header">
+                <div>
+                  <h3>Environment Classifier</h3>
+                  <p>These labels affect whether a simple rule, model, goal, or utility agent is enough.</p>
+                </div>
+              </div>
+              <div class="pill-board" id="environmentPills"></div>
+              <div class="agent-stack">
+                <div><strong>Simple reflex</strong><span>Condition-action rules, no memory.</span></div>
+                <div><strong>Model-based reflex</strong><span>Maintains internal state when the world is partially observable.</span></div>
+                <div><strong>Goal-based</strong><span>Searches for actions that reach a desired goal state.</span></div>
+                <div><strong>Utility-based</strong><span>Chooses among goals by expected preference or usefulness.</span></div>
+                <div><strong>Learning agent</strong><span>Improves from feedback instead of relying only on hand-coded behavior.</span></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="formulation" class="section">
+          <div class="section-header">
+            <p class="eyebrow">CS3 Bridge</p>
+            <h2>Problem Formulation</h2>
+            <p>Problem-solving agents convert a real-world story into a searchable state space. This is the step that makes BFS, A*, hill climbing, or GA meaningful.</p>
+          </div>
+          <div class="formula-grid">
+            <article>
+              <span>1</span>
+              <h3>State Space</h3>
+              <p>All configurations the problem can be in. In 8-puzzle, every tile arrangement is a state.</p>
+            </article>
+            <article>
+              <span>2</span>
+              <h3>Initial State</h3>
+              <p>The state from which the agent starts. This is the first node in the search tree or graph.</p>
+            </article>
+            <article>
+              <span>3</span>
+              <h3>Actions</h3>
+              <p>Legal moves from a state. For a graph, actions are outgoing edges; for 8-puzzle, blank-tile moves.</p>
+            </article>
+            <article>
+              <span>4</span>
+              <h3>Transition Model</h3>
+              <p>The result of applying an action: Result(state, action) gives the successor state.</p>
+            </article>
+            <article>
+              <span>5</span>
+              <h3>Goal Test</h3>
+              <p>A check for whether the current state satisfies what the agent wants.</p>
+            </article>
+            <article>
+              <span>6</span>
+              <h3>Path Cost</h3>
+              <p>The cost accumulated along a path. UCS and A* depend on this directly.</p>
+            </article>
+          </div>
+        </section>
+
+        <section id="search-lab" class="section">
+          <div class="section-header">
+            <p class="eyebrow">CS3 + Webinar 1</p>
+            <h2>Animated Graph Search Lab</h2>
+            <p>Step through the same graph with different strategies. Watch how the frontier, explored set, path cost, and heuristic change the behavior.</p>
+          </div>
+
+          <div class="search-layout">
+            <div class="tool-surface graph-tool">
+              <div class="control-row segmented" role="group" aria-label="Choose search algorithm">
+                <button class="algo-btn active" data-algo="bfs">BFS</button>
+                <button class="algo-btn" data-algo="dfs">DFS</button>
+                <button class="algo-btn" data-algo="ucs">UCS</button>
+                <button class="algo-btn" data-algo="ids">IDS</button>
+                <button class="algo-btn" data-algo="greedy">Greedy</button>
+                <button class="algo-btn" data-algo="astar">A*</button>
+              </div>
+
+              <div id="graphArea" class="graph-area" aria-label="Graph search animation"></div>
+
+              <div class="control-row">
+                <button id="prevStep" class="icon-button" title="Previous step" aria-label="Previous step">&lt;</button>
+                <button id="playSearch" class="icon-button play" title="Play or pause" aria-label="Play search">&#9654;</button>
+                <button id="nextStep" class="icon-button" title="Next step" aria-label="Next step">&gt;</button>
+                <button id="resetSearch" class="button small">Reset</button>
+                <span class="step-counter" id="stepCounter">Step 1 of 1</span>
+              </div>
+            </div>
+
+            <div class="tool-surface">
+              <div class="tool-header">
+                <div>
+                  <h3 id="algoTitle">Breadth First Search</h3>
+                  <p id="algoSummary">Queue based search that expands shallowest paths first.</p>
+                </div>
+              </div>
+              <div class="status-grid">
+                <div><span>Current</span><strong id="currentNode">-</strong></div>
+                <div><span>Frontier</span><strong id="frontierList">-</strong></div>
+                <div><span>Explored</span><strong id="exploredList">-</strong></div>
+                <div><span>Path</span><strong id="pathList">-</strong></div>
+              </div>
+              <p class="explain-box" id="searchNarration">Choose an algorithm and step through the graph.</p>
+              <div class="mini-table-wrap">
+                <table class="mini-table" id="frontierTable">
+                  <thead>
+                    <tr><th>Node</th><th>g</th><th>h</th><th>f</th><th>Path</th></tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div class="comparison-wrap">
+            <table class="comparison-table">
+              <thead>
+                <tr>
+                  <th>Algorithm</th>
+                  <th>Data structure / priority</th>
+                  <th>Complete?</th>
+                  <th>Optimal?</th>
+                  <th>Best mental model</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>BFS</td><td>Queue, shallowest first</td><td>Yes, finite branching</td><td>Yes, equal step costs</td><td>Cautious layer-by-layer search.</td></tr>
+                <tr><td>DFS</td><td>Stack, deepest first</td><td>No for infinite depth</td><td>No</td><td>Aggressive path-first search with low memory.</td></tr>
+                <tr><td>UCS</td><td>Priority by g(n)</td><td>Yes, positive costs</td><td>Yes</td><td>Always expand cheapest known path.</td></tr>
+                <tr><td>IDS</td><td>Depth-limited DFS repeated</td><td>Yes, finite branching</td><td>Yes, equal step costs</td><td>BFS completeness with DFS memory behavior.</td></tr>
+                <tr><td>Greedy</td><td>Priority by h(n)</td><td>Not guaranteed</td><td>No</td><td>Rush toward what looks closest.</td></tr>
+                <tr><td>A*</td><td>Priority by f(n)=g(n)+h(n)</td><td>Yes, with suitable costs</td><td>Yes, if heuristic is admissible and graph-search conditions are met</td><td>Balances cost so far and estimate to goal.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="heuristics" class="section">
+          <div class="section-header">
+            <p class="eyebrow">CS4 + A* Webinar</p>
+            <h2>Heuristic Design Studio</h2>
+            <p>Heuristics are educated estimates. They guide informed search, but A* only keeps its guarantee when the estimate is disciplined.</p>
+          </div>
+
+          <div class="two-col">
+            <div class="tool-surface">
+              <div class="tool-header">
+                <div>
+                  <h3>8-Puzzle Heuristics</h3>
+                  <p>Click a tile next to the blank. Compare misplaced tiles h1 and Manhattan distance h2.</p>
+                </div>
+                <div class="control-row compact">
+                  <button id="scramblePuzzle" class="button small">Shuffle</button>
+                  <button id="hintPuzzle" class="button small">Best h2 move</button>
+                </div>
+              </div>
+              <div class="puzzle-wrap">
+                <div class="puzzle-board" id="puzzleBoard" aria-label="8 puzzle board"></div>
+                <div class="heuristic-readout">
+                  <div><span>h1</span><strong id="misplacedValue">0</strong><small>misplaced tiles</small></div>
+                  <div><span>h2</span><strong id="manhattanValue">0</strong><small>Manhattan distance</small></div>
+                  <div><span>f</span><strong id="puzzleFValue">0</strong><small>g + selected h2</small></div>
+                </div>
+              </div>
+              <p class="explain-box" id="puzzleExplain">Both h1 and h2 are admissible for the standard 8-puzzle. h2 is usually more informative because it counts how far each tile must move.</p>
+            </div>
+
+            <div class="tool-surface">
+              <div class="tool-header">
+                <div>
+                  <h3>A* Conditions</h3>
+                  <p>Admissibility says do not overestimate. Consistency says each edge obeys a triangle-inequality style rule.</p>
+                </div>
+              </div>
+              <div class="condition-grid">
+                <article>
+                  <h4>Evaluation</h4>
+                  <p><strong>f(n) = g(n) + h(n)</strong></p>
+                  <p>g(n) is the path cost already paid. h(n) estimates the remaining cost.</p>
+                </article>
+                <article>
+                  <h4>Admissible</h4>
+                  <p><strong>0 <= h(n) <= h*(n)</strong></p>
+                  <p>The heuristic is optimistic: it never claims the goal is farther than it truly is.</p>
+                </article>
+                <article>
+                  <h4>Consistent</h4>
+                  <p><strong>h(n) <= c(n,a,n') + h(n')</strong></p>
+                  <p>Moving one step plus the new estimate cannot be cheaper than staying with the old estimate.</p>
+                </article>
+              </div>
+              <div class="consistency-box">
+                <h4>Consistency check on the search-lab graph</h4>
+                <div id="consistencyList"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="local-search" class="section">
+          <div class="section-header">
+            <p class="eyebrow">CS5 Optimization</p>
+            <h2>Local Search, Beam Search, Genetic Search, and ACO</h2>
+            <p>Here the path often does not matter. The current state itself is the candidate solution, so the algorithm keeps improving configurations.</p>
+          </div>
+
+          <div class="local-layout">
+            <div class="tool-surface">
+              <div class="tool-header">
+                <div>
+                  <h3>8-Queens Hill Climbing</h3>
+                  <p>One queen per column. Lower conflicts are better; zero conflicts solves the board.</p>
+                </div>
+                <button id="restartQueens" class="button small">Random restart</button>
+              </div>
+              <div class="queen-board" id="queenBoard" aria-label="8 queens board"></div>
+              <div class="metric-row">
+                <div><span>Conflicts</span><strong id="queenConflicts">0</strong></div>
+                <div><span>Fitness</span><strong id="queenFitness">28</strong></div>
+                <div><span>Temperature</span><strong id="temperatureValue">3.0</strong></div>
+              </div>
+              <div class="control-row wrap">
+                <button id="bestQueenStep" class="button small">Best neighbor</button>
+                <button id="stochasticQueenStep" class="button small">Stochastic step</button>
+                <button id="annealQueenStep" class="button small">Anneal step</button>
+                <label class="range-label">T <input id="temperatureRange" type="range" min="0.2" max="8" step="0.2" value="3"></label>
+              </div>
+              <p class="explain-box" id="queenExplain">Hill climbing moves to a better neighbor. If no neighbor is better, it may be stuck at a local optimum or plateau.</p>
+            </div>
+
+            <div class="tool-surface">
+              <div class="tool-header">
+                <div>
+                  <h3>Local Beam Search</h3>
+                  <p>Run K hill climbs in parallel and keep the best K successors.</p>
+                </div>
+                <label class="range-label">K <input id="beamK" type="range" min="2" max="6" value="3"></label>
+              </div>
+              <div class="control-row compact">
+                <button id="beamReset" class="button small">Reset beams</button>
+                <button id="beamStep" class="button small">Beam step</button>
+              </div>
+              <div id="beamList" class="beam-list"></div>
+
+              <div class="divider"></div>
+
+              <div class="tool-header">
+                <div>
+                  <h3>Genetic Search</h3>
+                  <p>Selection, crossover, and mutation evolve a population of 8-queens boards.</p>
+                </div>
+                <button id="gaStep" class="button small">Next generation</button>
+              </div>
+              <div id="gaPopulation" class="ga-population"></div>
+            </div>
+
+            <div class="tool-surface">
+              <div class="tool-header">
+                <div>
+                  <h3>Ant Colony Optimization</h3>
+                  <p>Ants explore routes; shorter successful paths receive more pheromone and become more likely.</p>
+                </div>
+                <button id="acoStep" class="button small">Send ants</button>
+              </div>
+              <canvas id="acoCanvas" width="520" height="280" aria-label="Ant colony optimization canvas"></canvas>
+              <div class="metric-row">
+                <div><span>Top route</span><strong id="acoBestRoute">-</strong></div>
+                <div><span>Pheromone A</span><strong id="pheromoneA">1.00</strong></div>
+                <div><span>Pheromone B</span><strong id="pheromoneB">1.00</strong></div>
+              </div>
+              <p class="explain-box">ACO is population-based like GA, but its shared memory is pheromone in the environment instead of chromosomes inside individuals.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="references" class="section">
+          <div class="section-header">
+            <p class="eyebrow">Revision Plan</p>
+            <h2>How to Study This Module</h2>
+            <p>Use the teacher's ordering first, then deepen with the references. Keep solving small examples by hand.</p>
+          </div>
+
+          <div class="study-grid">
+            <article>
+              <h3>1. Memorize the skeleton</h3>
+              <p>Agent -> PEAS -> environment type -> problem formulation -> algorithm choice -> guarantee check.</p>
+            </article>
+            <article>
+              <h3>2. Practice the tables</h3>
+              <p>For BFS, DFS, UCS, IDS, Greedy, and A*, compare completeness, optimality, time, space, and required assumptions.</p>
+            </article>
+            <article>
+              <h3>3. Work examples slowly</h3>
+              <p>For graph search, write frontier and explored after each expansion. For A*, write g, h, and f.</p>
+            </article>
+            <article>
+              <h3>4. Separate global and local search</h3>
+              <p>If the path matters, use tree/graph search. If only the final configuration matters, think local search or population search.</p>
+            </article>
+          </div>
+
+          <div class="references">
+            <h3>Sources used for this site</h3>
+            <ul>
+              <li>Lecture transcripts: ACILecture1-5 and ACIWebinar1.</li>
+              <li>Slides: CS1-CS5 and CS4informed_search.pptx.</li>
+              <li>Prescribed textbook path: Russell and Norvig, <em>Artificial Intelligence: A Modern Approach</em>, 4th ed., Chapters 1-4.</li>
+              <li>Algorithm references supplied by you: CLRS <em>Introduction to Algorithms</em>, Goodrich and Tamassia <em>Algorithm Design</em>, and <em>Data Structures and Algorithms Design</em>.</li>
+              <li><a href="https://aima.cs.berkeley.edu/" target="_blank" rel="noreferrer">AIMA official site</a> and <a href="https://github.com/aimacode/aima-python" target="_blank" rel="noreferrer">AIMA Python repository</a>.</li>
+              <li><a href="https://www-inst.eecs.berkeley.edu/~cs188/fa23/assets/notes/cs188-fa23-note03.pdf" target="_blank" rel="noreferrer">UC Berkeley CS188 search notes</a>.</li>
+              <li><a href="https://stanford.edu/~shervine/teaching/cs-221/cheatsheet-states-models/" target="_blank" rel="noreferrer">Stanford CS221 state-based models cheatsheet</a>.</li>
+              <li><a href="https://ocw.mit.edu/courses/6-01sc-introduction-to-electrical-engineering-and-computer-science-i-spring-2011/pages/unit-4-probability-and-planning/search-algorithms/" target="_blank" rel="noreferrer">MIT OCW search algorithms module</a>.</li>
+            </ul>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
